@@ -1,8 +1,8 @@
-const { Thoughts, User } = require('../models');
+const { Thought, User } = require('../models');
 
 module.exports = {
  
-  getUser(req, res) {
+  getUsers(req, res) {
     User.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
@@ -32,9 +32,9 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: 'No user with that ID' })
-          : Thoughts.deleteMany({ _id: { $in: user.thoughts } })
+          : Thoughts.deleteMany({ _id: { $in: user.thought } })
       )
-      .then(() => res.json({ message: 'User and thoughts deleted!' }))
+      .then(() => res.json({ message: 'Users and thoughts deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
   
