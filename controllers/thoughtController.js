@@ -53,7 +53,7 @@ module.exports = {
   },
 };
 
-createReaction({ params, body }, res) { 
+createReaction({ params, body }, res) 
   Thought.findOneAndUpdate(
     { _id: params.thoughtId },
     { $addToSet: { reactions: body } },
@@ -68,15 +68,15 @@ createReaction({ params, body }, res) {
   })
   .catch((err) => res.status(500).json(err));
   
-  }
+  
 
 
-deleteReaction({ params }, res) {
+deleteReaction({ params }, res){
   Thought.findOneAndUpdate(
     { _id: params.thoughtId },
     { $pull: { reactions: { reactionId: params.reactionId } } },
     { new: true }
-  )
+  )};
+  
    .then((dbThoughtData) => res.json(dbThoughtData))
     .catch((err) => res.status(500).json(err));
-};
