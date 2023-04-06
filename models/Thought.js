@@ -1,5 +1,5 @@
 const {Schema, model} = require('mongoose');
-const thoughts = require('../controllers/thoughts');
+const thoughts = require('../controllers/thoughtController');
 
 const thoughtsSchema = new Schema(
     {
