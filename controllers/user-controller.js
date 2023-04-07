@@ -56,7 +56,7 @@ module.exports = {
       { _id: req.params.userId },
       { $addToSet: { friends: req.params.friendId } },
       { runValidators: true, new: true }
-    )
+    )},
   
     .then((user) => {
       if (!user) {
@@ -67,4 +67,4 @@ module.exports = {
       res.json(user);
     })
     .catch((err) => res.status(500).json(err));
-}
+
