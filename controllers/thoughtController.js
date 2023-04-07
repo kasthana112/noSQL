@@ -1,5 +1,3 @@
-const { Thought, User } = require('../models');
-
 module.exports = {
  
   getThoughts(req, res) {
@@ -51,9 +49,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-};
-
-createReaction({ params, body }, res) 
+  createReaction({ params, body }, res) {
   Thought.findOneAndUpdate(
     { _id: params.thoughtId },
     { $addToSet: { reactions: body } },
@@ -67,6 +63,7 @@ createReaction({ params, body }, res)
     res.json(dbThoughtData);
   })
   .catch((err) => res.status(500).json(err));
+},
   
   
 
@@ -77,6 +74,7 @@ deleteReaction({ params }, res)
     { _id: params.thoughtId },
     { $pull: { reactions: { reactionId: params.reactionId } } },
     { new: true }
-  )};
+  )}
   
-   
+};
+
