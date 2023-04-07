@@ -1,6 +1,6 @@
 module.exports = {
  
-  getThoughts(req, res) {
+  getSingleThought(req, res) {
     Thought.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
