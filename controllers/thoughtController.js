@@ -1,6 +1,6 @@
 module.exports = {
  
-  getSingleThought(req, res) {
+  getThought(req, res) {
     Thought.find()
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
@@ -49,7 +49,7 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
-  createReaction({ params, body }, res) {
+  addReaction({ params, body }, res) {
   Thought.findOneAndUpdate(
     { _id: params.thoughtId },
     { $addToSet: { reactions: body } },
@@ -64,9 +64,6 @@ module.exports = {
   })
   .catch((err) => res.status(500).json(err));
 },
-  
-  
-
 
 deleteReaction({ params }, res)
 {
@@ -77,4 +74,6 @@ deleteReaction({ params }, res)
   )}
   
 };
+
+
 
